@@ -88,15 +88,39 @@ Il faudra récupérer l'id, le prénom, le nom du client ainsi que le montant et
 ```txt
 customer_id | first_name |  last_name   | amount |        payment_date
 ```
-
+```sql
+dvdrental=> SELECT customer.customer_id, customer.first_name, customer.last_name, payment.amount, payment.payment_date FROM customer JOIN payment ON customer.customer_id = payment.customer_id WHERE amount > 10 ;
+```
 ## 3bis
 
 Ecrivez une requête SQL qui affiche le chiffre d'affaire gagné par le video club depuis son ouverture.
-
+```sql
+dvdrental=> SELECT SUM(amount) FROM payment;
+   sum
+----------
+ 61312.04
+(1 row)
+```
 ## 4
 
 Ecrivez une requête SQL qui affiche le titre de tous les films dont la langue est l'anglais et dont la durée est supérieure à 120 minutes.
+```sql
+dvdrental=> SELECT name, language_id FROM language;
+         name         | language_id
+----------------------+-------------
+ English              |           1
+ Italian              |           2
+ Japanese             |           3
+ Mandarin             |           4
+ French               |           5
+ German               |           6
+(6 rows)
 
+dvdrental=> SELECT title FROM film WHERE language_id = 1 AND length > 120 ;
+```
+```sql
+dvdrental=> SELECT film.title FROM film INNER JOIN language ON film.language_id = language.language_id WHERE language.name = 'English' AND film.length > 120 ;
+```
 ## 5
 
 Ecrivez une requête SQL qui affiche le TOP 10 des clients qui ont fait le plus d'achat dans ce video club.
