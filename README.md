@@ -73,6 +73,12 @@ dvdrental=> \dt
 ## 2
 
 Ecrivez une requête SQL qui affiche tous les titres et descriptions des films dont la description contient le mot `Amazing`.
+```sql
+
+dvdrental=> SELECT title, description FROM film WHERE description LIKE '%Amazing%';
+
+```
+Je t'épargne les 48 entrées commençant par 'A amazing...'
 
 ## 3
 
