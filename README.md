@@ -126,7 +126,20 @@ dvdrental=> SELECT film.title FROM film INNER JOIN language ON film.language_id 
 Ecrivez une requête SQL qui affiche le TOP 10 des clients qui ont fait le plus d'achat dans ce video club.
 Il faudra récupérer leur id, prénom, nom, email.
 Il vous faudra utiliser les requêtes auxiliaires avec `WITH` pour cette exercice.
-
+```sql
+SELECT
+    customer.customer_id,
+    customer.first_name,
+    customer.last_name,
+    customer.email,
+    COUNT(rental_id)
+FROM customer JOIN rental
+ON customer.customer_id = rental.customer_id
+GROUP BY customer.customer_id
+ORDER BY count DESC
+FETCH FIRST 10 ROW ONLY;
+```
+Réalisé avec et grâce au talent de Hephka - obrigado.
 ## 6
 
 Récupérer les mêmes informations que l'exercice précédent, mais ajouter avec un `JOIN` le montant total des achats pour chacun du TOP 10 des clients.
