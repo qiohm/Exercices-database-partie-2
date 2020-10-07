@@ -89,8 +89,15 @@ Il faudra récupérer l'id, le prénom, le nom du client ainsi que le montant et
 customer_id | first_name |  last_name   | amount |        payment_date
 ```
 ```sql
-dvdrental=> SELECT customer.customer_id, customer.first_name, customer.last_name, payment.amount, payment.payment_date 
-FROM customer JOIN payment ON customer.customer_id = payment.customer_id WHERE amount > 10 ;
+dvdrental=> SELECT customer.customer_id, 
+                        customer.first_name, 
+                        customer.last_name, 
+                        payment.amount, 
+                        payment.payment_date 
+            FROM customer 
+            INNER JOIN payment 
+            ON customer.customer_id = payment.customer_id 
+            WHERE amount > 10 ;
 ```
 ## 3bis
 
@@ -128,7 +135,7 @@ Ecrivez une requête SQL qui affiche le TOP 10 des clients qui ont fait le plus 
 Il faudra récupérer leur id, prénom, nom, email.
 Il vous faudra utiliser les requêtes auxiliaires avec `WITH` pour cette exercice.
 ```sql
-SELECT
+dvdrental=> SELECT
     customer.customer_id,
     customer.first_name,
     customer.last_name,
