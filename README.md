@@ -124,10 +124,19 @@ dvdrental=> SELECT name, language_id FROM language;
  German               |           6
 (6 rows)
 
-dvdrental=> SELECT title FROM film WHERE language_id = 1 AND length > 120 ;
+dvdrental=> SELECT title 
+           FROM film 
+          WHERE language_id = 1 
+         AND length > 120 ;
 ```
 ```sql
-dvdrental=> SELECT film.title FROM film INNER JOIN language ON film.language_id = language.language_id WHERE language.name = 'English' AND film.length > 120 ;
+dvdrental=> 
+SELECT film.title 
+FROM film 
+INNER JOIN language 
+ON film.language_id = language.language_id 
+WHERE language.name = 'English' 
+AND film.length > 120 ;
 ```
 ## 5
 
